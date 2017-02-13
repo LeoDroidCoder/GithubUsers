@@ -1,0 +1,20 @@
+<resources xmlns:xliff="http://schemas.android.com/tools">
+    <string name="app_name">Genesis task</string>
+
+    <!--UsersListActivity-->
+    <string name="action_followers">Followers</string>
+    <string name="empty_view_users_list">Failed to load Github users</string>
+    <string name="action_retry">Retry</string>
+
+    <!--UserFollowersActivity-->
+    <string name="action_show_in_browser">Show in browser</string>
+    <string name="followers_title_format"><xliff:g id="user_login">%1$s</xliff:g>\'s followers</string>
+    <string name="chooser_title_format">Show <xliff:g id="user_login">%1$s</xliff:g>\'s page in a browser</string>
+
+    <!--Exception messages-->
+    <string name="exception_message_generic">An error occurred.\nTry again later</string>
+    <string name="exception_message_load_users">Failed to load users</string>
+    <string name="exception_message_load_followers">Failed to load followers</string>
+    <string name="error_no_internet_connection">Check internet connection</string>
+
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="avatar_shadow_radius" type="integer" format="float">6</item>
+
+</resources>

@@ -1,0 +1,67 @@
+ext {
+    // app name used in build name
+    appName = 'GenesisTest'
+    // libs versions
+    supportLibVersion = '25.0.1'
+    retrofitVersion = '2.0.1'
+    okHttpVersion = '3.4.1'
+    rxVersion = '1.1.0'
+    daggerVersion = '2.7'
+    daggerCompilerVersion = '2.0.2'
+}
+
+configurations.all {
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+
+        // support libs
+        compile "com.android.support:support-v4:$supportLibVersion"
+        compile "com.android.support:appcompat-v7:$supportLibVersion"
+        compile "com.android.support:support-annotations:$supportLibVersion"
+        compile "com.android.support:recyclerview-v7:$supportLibVersion"
+
+        // rx
+        compile "io.reactivex:rxandroid:$rxVersion"
+        compile "io.reactivex:rxjava:$rxVersion"
+
+        // retrofit
+        compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+        compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+        compile 'com.google.code.gson:gson:2.4'
+
+        // retro lambda
+        retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.0.4'
+
+        // dependency injection
+        apt "com.google.dagger:dagger-compiler:$daggerVersion"
+        compile "com.google.dagger:dagger:$daggerVersion"
+        provided 'javax.annotation:jsr250-api:1.0'
+        testApt "com.google.dagger:dagger-compiler:$daggerCompilerVersion"
+
+        // crash reports
+        compile "com.splunk.mint:mint:5.0.0"
+
+        // ui
+        compile 'com.github.bumptech.glide:glide:3.7.0'
+        compile 'com.mikhaellopez:circularimageview:3.0.2'
+
+        // testing
+        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        androidTestCompile 'org.mockito:mockito-all:2.0.2-beta'
+        androidTestApt "com.google.dagger:dagger-compiler:$daggerCompilerVersion"
+        compile 'org.mockito:mockito-all:2.0.2-beta'
+        testCompile 'junit:junit:4.12'
+        testCompile "com.android.support:support-annotations:$supportLibVersion"
+        testCompile 'org.json:json:20140107'
+        testCompile('com.squareup.assertj:assertj-android:1.1.1') {
+            exclude group: 'com.android.support'
+        }
+    }
+    resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
+}
+
+
