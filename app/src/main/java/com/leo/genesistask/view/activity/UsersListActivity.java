@@ -47,7 +47,7 @@ public class UsersListActivity extends BaseActivity implements UsersListContract
         setupViews();
 
         // initialize presenter
-        mPresenter = new UsersListPresenter(this, mRepository);
+        mPresenter = new UsersListPresenter(mRepository, this);
         // load users
         mProgressDialog.show();
         mPresenter.loadUsersList(USERS_AMOUNT_TO_LOAD);
@@ -86,7 +86,7 @@ public class UsersListActivity extends BaseActivity implements UsersListContract
         mProgressDialog.dismiss();
         // feed the adapter with the data
         mAdapter.setItems(users);
-        checkEmptyUsersList();
+        setUpRecyclerAppearence();
     }
 
     /**
@@ -99,7 +99,7 @@ public class UsersListActivity extends BaseActivity implements UsersListContract
         mProgressDialog.dismiss();
         // notify user with human-readable message
         showError(error);
-        checkEmptyUsersList();
+        setUpRecyclerAppearence();
     }
 
     /**
@@ -117,7 +117,7 @@ public class UsersListActivity extends BaseActivity implements UsersListContract
      * Shows users list RecyclerView or hides it and shows empty view
      * depending on data set size
      */
-    private void checkEmptyUsersList() {
+    private void setUpRecyclerAppearence() {
         boolean empty = mAdapter.getItemCount() == 0;
         mBinding.rvUsers.setVisibility(empty ? View.GONE : View.VISIBLE);
         mBinding.tvEmpty.setVisibility(empty ? View.VISIBLE : View.GONE);

@@ -13,12 +13,12 @@ import rx.Single;
 
 public class UserFollowersPresenter implements UserFollowersContract.Presenter {
 
-    private UserFollowersContract.View mView;
     private Repository mRepository;
+    private UserFollowersContract.View mView;
 
-    public UserFollowersPresenter(UserFollowersContract.View view, Repository repository) {
-        mView = view;
+    public UserFollowersPresenter(Repository repository, UserFollowersContract.View view) {
         mRepository = repository;
+        mView = view;
     }
 
 

@@ -58,7 +58,7 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         setupViews();
 
         // initialize presenter
-        mPresenter = new UserFollowersPresenter(this, mRepository);
+        mPresenter = new UserFollowersPresenter(mRepository, this);
         // load data
         mPresenter.getUserFollowers(mUserLogin);
     }
@@ -121,7 +121,7 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         mProgressDialog.dismiss();
         // supply adapter with the data
         mAdapter.setItems(followers);
-        checkEmptyUsersList();
+        setUpRecyclerAppearence();
     }
 
     /**
@@ -134,7 +134,7 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         mProgressDialog.dismiss();
         // notify user with human-readable message
         showError(error);
-        checkEmptyUsersList();
+        setUpRecyclerAppearence();
     }
 
     /**
@@ -178,7 +178,7 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
      * Shows followers list RecyclerView or hides it and shows empty view
      * depending on data set size
      */
-    private void checkEmptyUsersList() {
+    private void setUpRecyclerAppearence() {
         boolean empty = mAdapter.getItemCount() == 0;
         mBinding.rvFollowers.setVisibility(empty ? View.GONE : View.VISIBLE);
         mBinding.tvEmpty.setVisibility(empty ? View.VISIBLE : View.GONE);

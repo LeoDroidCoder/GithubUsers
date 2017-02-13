@@ -40,7 +40,7 @@ public class Repository {
             // remember id of the last user for the next request
             lastUserId = users.size() > 0 ? users.get(users.size() - 1).getId() : 0;
         }
-        // remove unneeded users if uploaded more then
+        // remove unneeded users if uploaded more then required
         if (users.size() > usersAmount) {
             users.subList(usersAmount, users.size()).clear();
         }
@@ -51,7 +51,7 @@ public class Repository {
      * Loads user followers from the remote.
      *
      * @param userLogin user login
-     * @return list followers
+     * @return list of followers
      */
     public List<User> getFollowers(String userLogin) {
         return mRemoteStorage.getFollowers(userLogin);

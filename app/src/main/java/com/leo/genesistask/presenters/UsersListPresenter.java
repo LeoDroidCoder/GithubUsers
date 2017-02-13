@@ -16,12 +16,12 @@ import rx.Single;
 
 public class UsersListPresenter implements UsersListContract.Presenter {
 
-    private UsersListContract.View mView;
     private Repository mRepository;
+    private UsersListContract.View mView;
 
-    public UsersListPresenter(UsersListContract.View view, Repository repository) {
-        mView = view;
+    public UsersListPresenter(Repository repository, UsersListContract.View view) {
         mRepository = repository;
+        mView = view;
     }
 
     /**
