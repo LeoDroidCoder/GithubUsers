@@ -8,6 +8,7 @@
 
     <!--UserFollowersActivity-->
     <string name="action_show_in_browser">Show in browser</string>
+    <string name="empty_view_followers">Failed to load followers</string>
     <string name="followers_title_format"><xliff:g id="user_login">%1$s</xliff:g>\'s followers</string>
     <string name="chooser_title_format">Show <xliff:g id="user_login">%1$s</xliff:g>\'s page in a browser</string>
 
