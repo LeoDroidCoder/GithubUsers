@@ -84,6 +84,7 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         }
     }
 
+
     /**
      * Setup views
      */
@@ -136,6 +137,18 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         checkEmptyUsersList();
     }
 
+    /**
+     * Open url button clicked on a User item
+     *
+     * @param user clicked user
+     */
+    @Override
+    public void onShowInBrowserClicked(User user) {
+        // show user's web page in a browser
+        IntentActionUtils.openUrl(this, user.getHtmlUrl(), String.format(getString(R.string.chooser_title_format), user.getLogin()));
+    }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -152,16 +165,14 @@ public class UserFollowersActivity extends BaseActivity implements UserFollowers
         overridePendingTransition(R.anim.stay, R.anim.slide_out_right);
     }
 
-    /**
-     * Open url button clicked on a User item
-     *
-     * @param user clicked user
-     */
     @Override
-    public void onShowInBrowserClicked(User user) {
-        // show user's web page in a browser
-        IntentActionUtils.openUrl(this, user.getHtmlUrl(), String.format(getString(R.string.chooser_title_format), user.getLogin()));
+    protected void onSaveInstanceState(Bundle outState) {
+        if (outState != null) {
+            outState.putString(INSTANCE_STATE_PARAM_USER_LOGIN, mUserLogin);
+        }
+        super.onSaveInstanceState(outState);
     }
+
 
     /**
      * Shows followers list RecyclerView or hides it and shows empty view
